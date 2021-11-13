@@ -15,7 +15,7 @@ contract SupplyChain is DoctorRole,  PatientRole {
   uint  sku;
 
   // maintain the list of doctors who can access to one medical record (SKU)
-  mapping (uint => string[]) readers;
+  mapping (uint => address[]) readers;
   
   // Define enum 'State' with the following values:
   enum State 
@@ -33,8 +33,9 @@ contract SupplyChain is DoctorRole,  PatientRole {
     string  file; 
     address owner;  // can be doctor or patient depends on the status of the item
     address fromDoctor; 
-    address forPatient; 
+    address forPatient;
     State   status;
+    uint price;
   }
 
   mapping (uint => MedicalRecord) items;
@@ -46,6 +47,11 @@ contract SupplyChain is DoctorRole,  PatientRole {
   // Define a modifer that checks to see if msg.sender == owner of the contract
   modifier onlyOwner() {
     require(msg.sender == owner);
+    _;
+  }
+
+  modifier onlyOwnerSku(uint _sku) {
+    require(items[_sku].owner == msg.sender);
     _;
   }
 
@@ -97,12 +103,33 @@ contract SupplyChain is DoctorRole,  PatientRole {
         owner: _doctor,
         fromDoctor: _doctor,
         forPatient: _forPatient,
-        status: State.Initialized
+        status: State.Initialized,
+        price: 0
       });
 
       items[sku] = mdr;
       sku = sku + 1;
       emit Initialized(sku);
     }
-  
+
+    function updateMDR(uint _sku, string _file, uint _price) public onlyOwnerSku(_sku) {
+      items[_sku].file = _file;
+      items[_sku].price = _price;
+    }
+
+    function payMDR(uint _sku) public payable 
+      paidEnough(items[_sku].price) 
+      updating(_sku) {
+      
+      // Transfer money to doctor
+      items[_sku].fromDoctor.transfer(items[_sku].price);
+      items[_sku].owner = msg.sender;
+      items[_sku].status = State.Complete;
+
+      emit Completed(_sku);
+    }
+
+    function shareMDR(uint _sku, address forDoctor) public onlyOwnerSku(_sku) {
+      readers[_sku].push(forDoctor);
+    }  
 }
