@@ -15,16 +15,16 @@ This project was deployed on the rinkeby testnet.
 
 ## UML Diagrams
 Activity Diagram
-![activity Diagram](images/activityDiagram.png)
+![activity Diagram](images/activity.png)
 
 Sequence Diagram
-![sequence Diagram](images/sequenceDiagram.png)
+![sequence Diagram](images/sequence.png)
 
 State Diagram
-![state Diagram](images/stateDiagram.png)
+![state Diagram](images/state.png)
 
 Class Diagram
-![class Diagram](images/classDiagram.png)
+![class Diagram](images/class.png)
 
 
 

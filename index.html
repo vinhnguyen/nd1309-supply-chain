@@ -11,55 +11,46 @@
 
 <body>
     <div class="container">
-        <h1 style="text-align: center;">Fair Trade Coffee </h1>
-        <hr>
-        <p style="text-align: center;">Prove the authenticity of coffee using the Ethereum blockchain.</p>
+        <h1 style="text-align: center;">Medical Records Supply Chain </h1>
     </div>
 
     <div id="ftc-harvest">
-        <h2>Product Overview</h2>
+        <h2>Initialize MDR</h2>
         <div class="form-group">
-            SKU
+            File
             <br>
-            <input class="input-field" type="number" id="sku" name="sku" value=1><br>
-            UPC
+            <input class="text" id="file" name="file" value="" size="50"><br>
+            From Doctor ID
             <br>
-            <input type="number" id="upc" name="upc" value=1><br>
-            Current Owner ID
+            <input type="text" id="doctorID" name="doctorID" value="" size="50"><br>
+            For Patient ID
             <br>
-            <input type="text" id="ownerID" name="ownerID" value="0x27d8d15cbc94527cadf5ec14b69519ae23288b95" size="50"><br>
+            <input type="text" id="patientID" name="patientID" value="" size="50"><br>
             <div class=button-div>
-                <button class="btn-fetchOne" id="button" type="button" data-id="9">Fetch Data 1</button>
-                <button class="btn-fetchTwo" id="button" type="button" data-id="10">Fetch Data 2</button>
+                <button class="btn-fetchOne" id="button" type="button" data-id="9">Create</button>
             </div>
         </div>
         <div class=form-break></div>
-        <h2>Farm Details</h2>
+        <h2>Update MDR</h2>
         <div class="form-group">
-            Farmer ID
+            SKU
             <br>
-            <input type="text" id="originFarmerID" name="originFarmerID" value="0x018c2dabef4904ecbd7118350a0c54dbeae3549a"
+            <input type="text" id="updateSKU" name="updateSKU" value=""
                 size="50"><br>
-            Farm Name
+            From Doctor ID
             <br>
-            <input type="text" id="originFarmName" name="originFarmName" value="John Doe"><br>
-            Farm Information
+            <input type="text" id="doctorId2" name="doctorId2" value=""><br>
+            File
             <br>
-            <input type="text" id="originFarmInformation" name="originFarmInformation" value="Yarra Valley"><br>
-            Farm Latitude
+            <input type="text" id="file2" name="file2" value=""><br>
+            Price
             <br>
-            <input type="text" id="originFarmLatitude" name="originFarmLatitude" value="-38.239770"><br>
-            Farm Longitude
+            <input type="text" id="price" name="price" value=""><br>
             <br>
-            <input type="text" id="originFarmLongitude" name="originFarmLongitude" value="144.341490"><br>
-            <br>
-            <button class="btn-harvest" id="button" type="button" data-id="1">Harvest</button>
-            <button class="btn-process" id="button" type="button" data-id="2">Process</button>
-            <button class="btn-pack" id="button" type="button" data-id="3">Pack</button>
-            <button class="btn-forsale" id="button" type="button" data-id="4">ForSale</button>
+            <button class="btn-harvest" id="btnUpdate" type="btnUpdate" data-id="1">Update</button>
         </div>
         <div class=form-break></div>
-        <h2>Product Details</h2>
+        <h2>Pay MDR</h2>
         <div class="form-group">
             Product Notes
             <br>
