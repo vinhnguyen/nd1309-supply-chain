@@ -33,17 +33,6 @@ button {
     cursor: pointer;
 }
 
-.sell { 
-  background-color: white;
-  color: #D1C4E9;
-}
-
-.ftc-intro {
-  background-color:#0097A7;
-  color:white;
-  width:100%;
-  padding:20px;
-}
 
 .form-group {
   background-color:#0097A7;

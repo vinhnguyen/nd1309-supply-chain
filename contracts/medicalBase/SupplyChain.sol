@@ -1,5 +1,6 @@
 pragma solidity ^0.4.24;
 
+import "@nomiclabs/buidler/console.sol";
 import "../medicalAccesscontrol/PatientRole.sol";
 import "../medicalAccesscontrol/DoctorRole.sol";
 import "../medicalCore/Ownable.sol";
@@ -91,9 +92,10 @@ contract SupplyChain is DoctorRole, PatientRole {
         string _file,
         address _doctor,
         address _forPatient
-    ) public onlyDoctor {
+    ) public {
+        console.log("console log %s %s %s ", _file, _doctor, _forPatient);
         MedicalRecord memory mdr = MedicalRecord({
-            sku: sku,
+            sku: 1,
             file: _file,
             owner: _doctor,
             fromDoctor: _doctor,
@@ -102,8 +104,8 @@ contract SupplyChain is DoctorRole, PatientRole {
             price: 0
         });
 
-        items[sku] = mdr;
-        sku = sku + 1;
+        // items[sku] = mdr;
+        // sku = sku + 1;
         emit Initialized(sku);
     }
 

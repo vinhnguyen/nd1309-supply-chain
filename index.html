@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fair Trade Coffee</title>
+    <title>Medical Records Supply Chain</title>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -17,9 +17,9 @@
     <div id="ftc-harvest">
         <h2>Initialize MDR</h2>
         <div class="form-group">
-            File
+            File (any string represent for ifds - implemented later)
             <br>
-            <input class="text" id="file" name="file" value="" size="50"><br>
+            <input class="text" id="fileID" name="file" value="" size="50"><br>
             From Doctor ID
             <br>
             <input type="text" id="doctorID" name="doctorID" value="" size="50"><br>
@@ -27,7 +27,7 @@
             <br>
             <input type="text" id="patientID" name="patientID" value="" size="50"><br>
             <div class=button-div>
-                <button class="btn-fetchOne" id="button" type="button" data-id="9">Create</button>
+                <button id="button" type="button" data-id="1">Create</button>
             </div>
         </div>
         <div class=form-break></div>
@@ -47,35 +47,19 @@
             <br>
             <input type="text" id="price" name="price" value=""><br>
             <br>
-            <button class="btn-harvest" id="btnUpdate" type="btnUpdate" data-id="1">Update</button>
+            <button id="btnUpdate" type="btnUpdate" data-id="2">Update</button>
         </div>
         <div class=form-break></div>
         <h2>Pay MDR</h2>
         <div class="form-group">
-            Product Notes
+            SKU
             <br>
-            <input type="text" id="productNotes" name="productNotes" value="Best beans for Espresso" size="60"><br>
-            Product Price
+            <input type="text" id="skuBuy" name="skuBuy" value="" size="50"><br>
+            Price
             <br>
-            <input type="number" id="productPrice" name="productPrice" value=1>ETH<br>
-            Distributor ID
+            <input type="number" id="skuPrice" name="skuPrice" value=1>ETH<br>
             <br>
-            <input type="text" id="distributorID" name="distributorID" value="0xce5144391b4ab80668965f2cc4f2cc102380ef0a"
-                size="50">
-            <br>
-            Retailer ID
-            <br>
-            <input type="text" id="retailerID" name="retailerID" value="0x0fb2bfefd526966c87efa19f6693d50971763fc2"
-                size="50"><br>
-            Consumer ID
-            <br>
-            <input type="text" id="consumerID" name="consumerID" value="0x5d777e9127b28fb119e81a6304278a0a21bef1c4"
-                size="50"><br>
-            <br>
-            <button class="btn-buy" id="button" type="button" data-id="5">Buy</button>
-            <button class="btn-ship" id="button" type="button" data-id="6">Ship</button>
-            <button class="btn-receive" id="button" type="button" data-id="7">Receive</button>
-            <button class="btn-purchase" id="button" type="button" data-id="8">Purchase</button>
+            <button id="button" type="button" data-id="3">Pay</button>
         </div>
         <div class=form-break></div>
         <hr>

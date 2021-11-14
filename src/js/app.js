@@ -3,19 +3,11 @@ App = {
     contracts: {},
     emptyAddress: "0x0000000000000000000000000000000000000000",
     sku: 0,
-    upc: 0,
     metamaskAccountID: "0x0000000000000000000000000000000000000000",
-    ownerID: "0x0000000000000000000000000000000000000000",
-    originFarmerID: "0x0000000000000000000000000000000000000000",
-    originFarmName: null,
-    originFarmInformation: null,
-    originFarmLatitude: null,
-    originFarmLongitude: null,
-    productNotes: null,
-    productPrice: 0,
-    distributorID: "0x0000000000000000000000000000000000000000",
-    retailerID: "0x0000000000000000000000000000000000000000",
-    consumerID: "0x0000000000000000000000000000000000000000",
+    file: "0x0000000000000000000000000000000000000000",
+    fromDoctorID: "0x0000000000000000000000000000000000000000",
+    forPatientID: null,
+    price: 0,
 
     init: async function () {
         App.readForm();
@@ -25,33 +17,17 @@ App = {
 
     readForm: function () {
         App.sku = $("#sku").val();
-        App.upc = $("#upc").val();
-        App.ownerID = $("#ownerID").val();
-        App.originFarmerID = $("#originFarmerID").val();
-        App.originFarmName = $("#originFarmName").val();
-        App.originFarmInformation = $("#originFarmInformation").val();
-        App.originFarmLatitude = $("#originFarmLatitude").val();
-        App.originFarmLongitude = $("#originFarmLongitude").val();
-        App.productNotes = $("#productNotes").val();
-        App.productPrice = $("#productPrice").val();
-        App.distributorID = $("#distributorID").val();
-        App.retailerID = $("#retailerID").val();
-        App.consumerID = $("#consumerID").val();
+        App.file = $("#fileID").val();
+        App.fromDoctorID = $("#doctorID").val();
+        App.forPatientID = $("#patientID").val();
+        App.price = $("#price").val();
 
         console.log(
             App.sku,
-            App.upc,
-            App.ownerID, 
-            App.originFarmerID, 
-            App.originFarmName, 
-            App.originFarmInformation, 
-            App.originFarmLatitude, 
-            App.originFarmLongitude, 
-            App.productNotes, 
-            App.productPrice, 
-            App.distributorID, 
-            App.retailerID, 
-            App.consumerID
+            App.file, 
+            App.fromDoctorID, 
+            App.forPatientID, 
+            App.price
         );
     },
 
@@ -79,6 +55,7 @@ App = {
         }
 
         App.getMetaskAccountID();
+        web3.eth.defaultAccount = web3.eth.accounts[0];
 
         return App.initSupplyChain();
     },
@@ -109,9 +86,9 @@ App = {
             App.contracts.SupplyChain = TruffleContract(SupplyChainArtifact);
             App.contracts.SupplyChain.setProvider(App.web3Provider);
             
-            App.fetchItemBufferOne();
-            App.fetchItemBufferTwo();
-            App.fetchEvents();
+            // App.fetchItemBufferOne();
+            // App.fetchItemBufferTwo();
+            // App.fetchEvents();
 
         });
 
@@ -132,7 +109,7 @@ App = {
 
         switch(processId) {
             case 1:
-                return await App.harvestItem(event);
+                return await App.createMDR(event);
                 break;
             case 2:
                 return await App.processItem(event);
@@ -143,44 +120,26 @@ App = {
             case 4:
                 return await App.sellItem(event);
                 break;
-            case 5:
-                return await App.buyItem(event);
-                break;
-            case 6:
-                return await App.shipItem(event);
-                break;
-            case 7:
-                return await App.receiveItem(event);
-                break;
-            case 8:
-                return await App.purchaseItem(event);
-                break;
-            case 9:
-                return await App.fetchItemBufferOne(event);
-                break;
-            case 10:
-                return await App.fetchItemBufferTwo(event);
-                break;
             }
     },
 
-    harvestItem: function(event) {
+    createMDR: function(event) {
         event.preventDefault();
         var processId = parseInt($(event.target).data('id'));
+        App.readForm();
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
-            return instance.harvestItem(
-                App.upc, 
-                App.metamaskAccountID, 
-                App.originFarmName, 
-                App.originFarmInformation, 
-                App.originFarmLatitude, 
-                App.originFarmLongitude, 
-                App.productNotes
+            console.log('file ' + App.file);
+            console.log('fromDoctor ' + App.fromDoctorID);
+            console.log('forPatient ' + App.forPatientID);
+            return instance.createMDR(
+                App.file, 
+                App.fromDoctorID, 
+                App.forPatientID
             );
         }).then(function(result) {
-            $("#ftc-item").text(result);
-            console.log('harvestItem',result);
+            // $("#ftc-item").text(result);
+            console.log('createMDR',result);
         }).catch(function(err) {
             console.log(err.message);
         });
