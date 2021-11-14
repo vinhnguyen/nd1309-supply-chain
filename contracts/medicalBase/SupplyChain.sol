@@ -67,8 +67,8 @@ contract SupplyChain is DoctorRole, PatientRole {
     }
 
     // Define a modifier that checks if an item.state of a upc is Processed
-    modifier updating(uint256 _sku) {
-        require(items[_sku].status == State.Updating);
+    modifier updating(State _state) {
+        require(_state == State.Updating);
         _;
     }
 
@@ -84,12 +84,13 @@ contract SupplyChain is DoctorRole, PatientRole {
     }
 
     function createMDR(
+        uint256 _sku,
         string _file,
         address _forPatient
     ) public {
         // console.log("console log %s %s %s ", _file, _doctor, _forPatient); onlyDoctor
         MedicalRecord memory mdr = MedicalRecord({
-            sku: sku,
+            sku: _sku,
             file: _file,
             owner: msg.sender,
             fromDoctor: msg.sender,
@@ -98,8 +99,8 @@ contract SupplyChain is DoctorRole, PatientRole {
             price: 0
         });
 
-        items[sku] = mdr;
-        sku = sku + 1;
+        items[_sku] = mdr;
+        // sku = sku + 1;
         emit Initialized(sku);
     }
 
@@ -108,21 +109,24 @@ contract SupplyChain is DoctorRole, PatientRole {
         string _file,
         uint256 _price
     ) public verifyCaller(items[_sku].owner) {
-        // onlyOwnerSku(_sku)
         items[_sku].file = _file;
         items[_sku].price = _price;
 
         emit Updated(_sku);
     }
 
-    function payMDR(uint256 _sku)
+    function payMDR(uint256 _sku, uint256 _price)
         public
         payable
+        verifyCaller(items[_sku].forPatient) 
         paidEnough(items[_sku].price)
-        updating(_sku)
     {
+        // updating(items[_sku].status) 
+        // paidEnough(items[_sku].price) 
+        // verifyCaller(items[_sku].forPatient)
+
         // Transfer money to doctor
-        items[_sku].fromDoctor.transfer(items[_sku].price);
+        items[_sku].fromDoctor.transfer(_price);
         items[_sku].owner = msg.sender;
         items[_sku].status = State.Complete;
 
@@ -130,8 +134,7 @@ contract SupplyChain is DoctorRole, PatientRole {
     }
 
     function shareMDR(uint256 _sku, address forDoctor)
-        public
-        // onlyOwnerSku(_sku)
+        public verifyCaller(items[_sku].owner) 
     {
         readers[_sku].push(forDoctor);
     }

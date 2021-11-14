@@ -29,13 +29,19 @@ App = {
         App.skuPrice = $("#skuPrice").val();
 
         console.log(
+            "App.sku",
             App.sku,
+            "App.file", 
             App.file, 
-            // App.fromDoctorID, 
+            "App.forPatientID", 
             App.forPatientID, 
+            "App.price",
             App.price,
+            "App.updatedSKU",
             App.updatedSKU,
+            "App.boughtSKU",
             App.boughtSKU,
+            "App.skuPrice",
             App.skuPrice
         );
     },
@@ -126,7 +132,7 @@ App = {
                 return await App.updateMDR(event);
                 break;
             case 3:
-                return await App.packItem(event);
+                return await App.payMDR(event);
                 break;
             case 4:
                 return await App.sellItem(event);
@@ -139,11 +145,9 @@ App = {
         var processId = parseInt($(event.target).data('id'));
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
-            console.log('file ' + App.file);
-            console.log('forPatient ' + App.forPatientID);
             return instance.createMDR(
+                App.sku, 
                 App.file, 
-                App.fromDoctorID, 
                 App.forPatientID
             );
         }).then(function(result) {
@@ -168,15 +172,17 @@ App = {
         });
     },
     
-    packItem: function (event) {
+    payMDR: function (event) {
         event.preventDefault();
-        var processId = parseInt($(event.target).data('id'));
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
-            return instance.packItem(App.upc, {from: App.metamaskAccountID});
+            return instance.payMDR(
+                App.boughtSKU,
+                App.skuPrice
+                );
         }).then(function(result) {
-            $("#ftc-item").text(result);
-            console.log('packItem',result);
+            // $("#ftc-item").text(result);
+            console.log('payMDR',result);
         }).catch(function(err) {
             console.log(err.message);
         });
