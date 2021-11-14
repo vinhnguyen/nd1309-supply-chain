@@ -48,11 +48,6 @@ contract SupplyChain is DoctorRole, PatientRole {
         _;
     }
 
-    modifier onlyOwnerSku(uint256 _sku) {
-        require(items[_sku].owner == msg.sender);
-        _;
-    }
-
     // Define a modifer that verifies the Caller
     modifier verifyCaller(address _address) {
         require(msg.sender == _address);
@@ -90,22 +85,21 @@ contract SupplyChain is DoctorRole, PatientRole {
 
     function createMDR(
         string _file,
-        address _doctor,
         address _forPatient
     ) public {
-        console.log("console log %s %s %s ", _file, _doctor, _forPatient);
+        // console.log("console log %s %s %s ", _file, _doctor, _forPatient); onlyDoctor
         MedicalRecord memory mdr = MedicalRecord({
-            sku: 1,
+            sku: sku,
             file: _file,
-            owner: _doctor,
-            fromDoctor: _doctor,
+            owner: msg.sender,
+            fromDoctor: msg.sender,
             forPatient: _forPatient,
             status: State.Initialized,
             price: 0
         });
 
-        // items[sku] = mdr;
-        // sku = sku + 1;
+        items[sku] = mdr;
+        sku = sku + 1;
         emit Initialized(sku);
     }
 
@@ -113,7 +107,8 @@ contract SupplyChain is DoctorRole, PatientRole {
         uint256 _sku,
         string _file,
         uint256 _price
-    ) public onlyOwnerSku(_sku) {
+    ) public verifyCaller(items[_sku].owner) {
+        // onlyOwnerSku(_sku)
         items[_sku].file = _file;
         items[_sku].price = _price;
 
@@ -136,7 +131,7 @@ contract SupplyChain is DoctorRole, PatientRole {
 
     function shareMDR(uint256 _sku, address forDoctor)
         public
-        onlyOwnerSku(_sku)
+        // onlyOwnerSku(_sku)
     {
         readers[_sku].push(forDoctor);
     }

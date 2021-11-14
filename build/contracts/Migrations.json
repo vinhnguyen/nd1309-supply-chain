@@ -193,7 +193,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9271,
+                        "referencedDeclaration": 9273,
                         "src": "150:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -279,7 +279,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9271,
+                        "referencedDeclaration": 9273,
                         "src": "201:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -843,7 +843,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9271,
+                        "referencedDeclaration": 9273,
                         "src": "150:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -929,7 +929,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9271,
+                        "referencedDeclaration": 9273,
                         "src": "201:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1375,13 +1375,19 @@
     "version": "0.4.26+commit.4563c3fc.Emscripten.clang"
   },
   "networks": {
-    "1636877565369": {
+    "1636878990001": {
       "events": {},
       "links": {},
-      "address": "0xfeecff2cb7d6f3bfcbe5fa41c49c8fb642f2ddbf",
-      "transactionHash": "0x494f0b5b39828a43ecec6ca8b68c18d5949d00c2a23b583e27e6f30fd13818d8"
+      "address": "0x768609e46b0b1bd5485ca13accccd3b11b9649f7",
+      "transactionHash": "0x34228ad0188ba01c512e2ce89ba7ee1d89489a071ec6f44f3de5c787e7ad941a"
+    },
+    "1636881264261": {
+      "events": {},
+      "links": {},
+      "address": "0x04337f93b0fb5c9eaa764b5377f16d66514a9ebe",
+      "transactionHash": "0xac5c94c0976c7b9883d79893ced51524ceaaf17b9845c2a20db4ee3c72cde940"
     }
   },
   "schemaVersion": "2.0.3",
-  "updatedAt": "2021-11-14T08:13:19.906Z"
+  "updatedAt": "2021-11-14T09:41:55.728Z"
 }

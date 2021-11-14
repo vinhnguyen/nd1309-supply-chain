@@ -4,10 +4,13 @@ App = {
     emptyAddress: "0x0000000000000000000000000000000000000000",
     sku: 0,
     metamaskAccountID: "0x0000000000000000000000000000000000000000",
-    file: "0x0000000000000000000000000000000000000000",
-    fromDoctorID: "0x0000000000000000000000000000000000000000",
-    forPatientID: null,
+    file: "",
+    // fromDoctorID: "0x0000000000000000000000000000000000000000",
+    forPatientID: "",
     price: 0,
+    updatedSKU: "",
+    boughtSKU: "",
+    skuPrice: "",
 
     init: async function () {
         App.readForm();
@@ -18,16 +21,22 @@ App = {
     readForm: function () {
         App.sku = $("#sku").val();
         App.file = $("#fileID").val();
-        App.fromDoctorID = $("#doctorID").val();
+        // App.fromDoctorID = $("#doctorID").val();
         App.forPatientID = $("#patientID").val();
         App.price = $("#price").val();
+        App.updatedSKU = $("#updateSKU").val();
+        App.boughtSKU = $("#boughtSKU").val();
+        App.skuPrice = $("#skuPrice").val();
 
         console.log(
             App.sku,
             App.file, 
-            App.fromDoctorID, 
+            // App.fromDoctorID, 
             App.forPatientID, 
-            App.price
+            App.price,
+            App.updatedSKU,
+            App.boughtSKU,
+            App.skuPrice
         );
     },
 
@@ -104,6 +113,8 @@ App = {
 
         App.getMetaskAccountID();
 
+        App.readForm();
+
         var processId = parseInt($(event.target).data('id'));
         console.log('processId',processId);
 
@@ -112,7 +123,7 @@ App = {
                 return await App.createMDR(event);
                 break;
             case 2:
-                return await App.processItem(event);
+                return await App.updateMDR(event);
                 break;
             case 3:
                 return await App.packItem(event);
@@ -126,11 +137,9 @@ App = {
     createMDR: function(event) {
         event.preventDefault();
         var processId = parseInt($(event.target).data('id'));
-        App.readForm();
 
         App.contracts.SupplyChain.deployed().then(function(instance) {
             console.log('file ' + App.file);
-            console.log('fromDoctor ' + App.fromDoctorID);
             console.log('forPatient ' + App.forPatientID);
             return instance.createMDR(
                 App.file, 
@@ -145,15 +154,15 @@ App = {
         });
     },
 
-    processItem: function (event) {
-        event.preventDefault();
-        var processId = parseInt($(event.target).data('id'));
-
+    updateMDR: function (event) {
         App.contracts.SupplyChain.deployed().then(function(instance) {
-            return instance.processItem(App.upc, {from: App.metamaskAccountID});
+            return instance.updateMDR(
+                App.updatedSKU,
+                App.file,
+                App.skuPrice);
         }).then(function(result) {
-            $("#ftc-item").text(result);
-            console.log('processItem',result);
+            // $("#ftc-item").text(result);
+            console.log('updateMDR',result);
         }).catch(function(err) {
             console.log(err.message);
         });
