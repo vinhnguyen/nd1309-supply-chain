@@ -14,7 +14,7 @@ contract SupplyChain is DoctorRole, PatientRole {
     uint256 sku;
 
     // maintain the list of doctors who can access to one medical record (SKU)
-    mapping(uint256 => address[]) readers;
+    mapping(uint256 => address[]) public readers;
 
     // Define enum 'State' with the following values:
     enum State {
@@ -88,7 +88,6 @@ contract SupplyChain is DoctorRole, PatientRole {
         string _file,
         address _forPatient
     ) public {
-        // console.log("console log %s %s %s ", _file, _doctor, _forPatient); onlyDoctor
         MedicalRecord memory mdr = MedicalRecord({
             sku: _sku,
             file: _file,
@@ -100,7 +99,7 @@ contract SupplyChain is DoctorRole, PatientRole {
         });
 
         items[_sku] = mdr;
-        // sku = sku + 1;
+        sku = sku + 1;
         emit Initialized(sku);
     }
 
@@ -108,9 +107,10 @@ contract SupplyChain is DoctorRole, PatientRole {
         uint256 _sku,
         string _file,
         uint256 _price
-    ) public verifyCaller(items[_sku].owner) {
+    ) public verifyCaller(items[_sku].owner) payable {
         items[_sku].file = _file;
         items[_sku].price = _price;
+        items[_sku].status = State.Updating;
 
         emit Updated(_sku);
     }
@@ -137,5 +137,51 @@ contract SupplyChain is DoctorRole, PatientRole {
         public verifyCaller(items[_sku].owner) 
     {
         readers[_sku].push(forDoctor);
+    }
+
+    function fetchMDR(uint _sku) public view returns 
+    (
+        uint256 skuItem, 
+        string fileItem,
+        address ownerItem,
+        address fromDoctorItem,
+        address forPatientItem,
+        State statusItem,
+        uint256 priceItem
+    )
+    {
+        skuItem = items[_sku].sku;
+        fileItem = items[_sku].file;
+        ownerItem = items[_sku].owner;
+        fromDoctorItem = items[_sku].fromDoctor;
+        forPatientItem = items[_sku].forPatient;
+        statusItem = items[_sku].status;
+        priceItem = items[_sku].price;
+
+        return (
+            skuItem,
+            fileItem,
+            ownerItem,
+            fromDoctorItem,
+            forPatientItem,
+            statusItem,
+            priceItem
+        );
+    }
+
+    function canReadMDR(uint _sku, address _reader) public view returns (bool)
+    {
+        bool canRead = false;
+        for (uint i = 0; i < readers[_sku].length; i++) {
+            if (readers[_sku][i] == _reader) canRead = true;
+        }
+
+        return canRead;
+    }
+
+    function fetchReaders(uint _sku) public returns (address item)
+    {
+        item = readers[_sku][0];
+        return item;
     }
 }

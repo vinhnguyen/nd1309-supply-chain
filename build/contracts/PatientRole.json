@@ -284,7 +284,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8790,
+                          "referencedDeclaration": 8916,
                           "src": "339:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -392,7 +392,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 8790,
+                              "referencedDeclaration": 8916,
                               "src": "488:3:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -458,10 +458,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        8793,
-                        8794
+                        8919,
+                        8920
                       ],
-                      "referencedDeclaration": 8793,
+                      "referencedDeclaration": 8919,
                       "src": "470:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -820,7 +820,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8790,
+                          "referencedDeclaration": 8916,
                           "src": "947:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1490,7 +1490,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8790,
+                          "referencedDeclaration": 8916,
                           "src": "339:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1598,7 +1598,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 8790,
+                              "referencedDeclaration": 8916,
                               "src": "488:3:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -1664,10 +1664,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        8793,
-                        8794
+                        8919,
+                        8920
                       ],
-                      "referencedDeclaration": 8793,
+                      "referencedDeclaration": 8919,
                       "src": "470:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2026,7 +2026,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8790,
+                          "referencedDeclaration": 8916,
                           "src": "947:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2514,8 +2514,20 @@
       "links": {},
       "address": "0x2429c02f19c8d080f46ac8a5aec6d47265a8a21c",
       "transactionHash": "0x842e111f9d4333764539cc09f8ea04eb02b804ae01ace797437ee264b28f5735"
+    },
+    "1637479468278": {
+      "events": {},
+      "links": {},
+      "address": "0xef8a7494fed34ab7dd3cfd83fa723ab9c6f5b2fd",
+      "transactionHash": "0x6afc9c72afacaefc5c2d9c0b8e3b2e1d0c4f757389de8694dfb118b2e0783590"
+    },
+    "1637483612392": {
+      "events": {},
+      "links": {},
+      "address": "0x7cca8024cb7c56ea6c53d161654e2ba969037c71",
+      "transactionHash": "0x525a8d16a24b73a86b15c6bb240f00e4d9014f8c474756632bd86e45855a3075"
     }
   },
   "schemaVersion": "2.0.3",
-  "updatedAt": "2021-11-14T11:01:47.396Z"
+  "updatedAt": "2021-11-21T09:31:29.334Z"
 }
