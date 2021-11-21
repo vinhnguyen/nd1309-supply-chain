@@ -1,7 +1,7 @@
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
-const infuraKey = "a0bdfa8f1ea9439596c4583ed957aa09";
-const mnemonic = "cram duty imitate truly pride antenna join arch shadow know equip vintage";
+const infuraKey = "TBD"; // security purpose
+const mnemonic = "TBD"; // security purpose
 
 module.exports = {
   networks: {
@@ -15,7 +15,7 @@ module.exports = {
   rinkeby: {
     provider: new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`),
     network_id: 4,       // Rinkeby id
-    gas: 4500000,        // Rinkeby has a lower block limit than mainnet
+    gas: 4500000,        
     }
   },
   compilers: {

@@ -7,9 +7,9 @@ This repository shows a supply chain DAPP.
 This project was deployed on the rinkeby testnet.
 
 ```
- transaction hash:  0x06bd75d30a16f142b9f6efdb0d9f5ac5f4aa663af94f4528464914d5718b6d9e
+ transaction hash:  0x22568749da81003da2a20b0a34d80909eb38be564598af9dd60f714ec0483113
 
- contract address:  0x5e51e9d49eff1f5b7ce5667db8a60242f50e5b14
+ contract address:  0xcB403AcF4A6FC1819e7b1C84BF6066d38B2Ee274
 
 ```
 
@@ -97,19 +97,11 @@ Available Accounts obtained from ganache phrase above
     ```
 Contract Owner -   (0) 0x27d8d15cbc94527cadf5ec14b69519ae23288b95
 
-Farmer         -   (1) 0x018c2dabef4904ecbd7118350a0c54dbeae3549a
+Doctor         -   (1) 0x018c2dabef4904ecbd7118350a0c54dbeae3549a
 
-Distributor    -   (2) 0xce5144391b4ab80668965f2cc4f2cc102380ef0a
-
-Retailer       -   (3) 0x460c31107dd048e34971e57da2f99f659add4f02
-
-Consumer       -   (4) 0xd37b7b8c62be2fdde8daa9816483aebdbd356088
+Patient    -   (2) 0xce5144391b4ab80668965f2cc4f2cc102380ef0a
     
     ```
-
-Hosted using fleek
-
-[ipfs link](https://ipfs.io/ipfs/QmdRQp4asGSYzDXW76vq5H7isR6mB8wK9vH8x1pQ81C4Ym/)
 
 
 
