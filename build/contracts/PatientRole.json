@@ -284,7 +284,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8925,
+                          "referencedDeclaration": 8923,
                           "src": "339:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -392,7 +392,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 8925,
+                              "referencedDeclaration": 8923,
                               "src": "488:3:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -458,10 +458,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        8928,
-                        8929
+                        8926,
+                        8927
                       ],
-                      "referencedDeclaration": 8928,
+                      "referencedDeclaration": 8926,
                       "src": "470:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -820,7 +820,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8925,
+                          "referencedDeclaration": 8923,
                           "src": "947:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1490,7 +1490,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8925,
+                          "referencedDeclaration": 8923,
                           "src": "339:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1598,7 +1598,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 8925,
+                              "referencedDeclaration": 8923,
                               "src": "488:3:1",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -1664,10 +1664,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        8928,
-                        8929
+                        8926,
+                        8927
                       ],
-                      "referencedDeclaration": 8928,
+                      "referencedDeclaration": 8926,
                       "src": "470:7:1",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
@@ -2026,7 +2026,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 8925,
+                          "referencedDeclaration": 8923,
                           "src": "947:3:1",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2535,5 +2535,5 @@
     }
   },
   "schemaVersion": "2.0.3",
-  "updatedAt": "2021-11-21T09:40:12.833Z"
+  "updatedAt": "2021-11-21T10:05:59.244Z"
 }
