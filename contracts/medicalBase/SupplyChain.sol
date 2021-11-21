@@ -107,7 +107,7 @@ contract SupplyChain is DoctorRole, PatientRole {
         uint256 _sku,
         string _file,
         uint256 _price
-    ) public verifyCaller(items[_sku].owner) payable {
+    ) public payable verifyCaller(items[_sku].owner) {
         items[_sku].file = _file;
         items[_sku].price = _price;
         items[_sku].status = State.Updating;
@@ -118,11 +118,10 @@ contract SupplyChain is DoctorRole, PatientRole {
     function payMDR(uint256 _sku, uint256 _price)
         public
         payable
-        verifyCaller(items[_sku].forPatient) 
         paidEnough(items[_sku].price)
     {
-        // updating(items[_sku].status) 
-        // paidEnough(items[_sku].price) 
+        // updating(items[_sku].status)
+        // paidEnough(items[_sku].price)
         // verifyCaller(items[_sku].forPatient)
 
         // Transfer money to doctor
@@ -134,21 +133,24 @@ contract SupplyChain is DoctorRole, PatientRole {
     }
 
     function shareMDR(uint256 _sku, address forDoctor)
-        public verifyCaller(items[_sku].owner) 
+        public
+        verifyCaller(items[_sku].owner)
     {
         readers[_sku].push(forDoctor);
     }
 
-    function fetchMDR(uint _sku) public view returns 
-    (
-        uint256 skuItem, 
-        string fileItem,
-        address ownerItem,
-        address fromDoctorItem,
-        address forPatientItem,
-        State statusItem,
-        uint256 priceItem
-    )
+    function fetchMDR(uint256 _sku)
+        public
+        view
+        returns (
+            uint256 skuItem,
+            string fileItem,
+            address ownerItem,
+            address fromDoctorItem,
+            address forPatientItem,
+            State statusItem,
+            uint256 priceItem
+        )
     {
         skuItem = items[_sku].sku;
         fileItem = items[_sku].file;
@@ -169,19 +171,19 @@ contract SupplyChain is DoctorRole, PatientRole {
         );
     }
 
-    function canReadMDR(uint _sku, address _reader) public view returns (bool)
+    function canReadMDR(uint256 _sku, address _reader)
+        public
+        view
+        returns (bool)
     {
         bool canRead = false;
-        for (uint i = 0; i < readers[_sku].length; i++) {
+        for (uint256 i = 0; i < readers[_sku].length; i++) {
             if (readers[_sku][i] == _reader) canRead = true;
         }
 
         return canRead;
     }
 
-    function fetchReaders(uint _sku) public returns (address item)
-    {
-        item = readers[_sku][0];
-        return item;
-    }
+    // @notice Will receive any eth sent to the contract
+    function() external payable {}
 }

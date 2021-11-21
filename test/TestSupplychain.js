@@ -80,16 +80,34 @@ contract('SupplyChain',  function(accounts) {
             
         var sku = 3;
         var fileId = "file-id";
-        var fileIdUpdated = "file-id updated";
         var price = 0.0001;
 
        
         await supplyChain.createMDR(sku, fileId , patientId);
         await supplyChain.shareMDR(sku, doctorId);
         var canRead = await supplyChain.canReadMDR(sku, doctorId);
-        var readers = await supplyChain.fetchReaders(sku);
 
         assert.equal(canRead, true, 'Invalid permission');
+    })
+
+    it("Testing smart contract payMDR() from a patient", async() => {
+        const supplyChain = await SupplyChain.deployed()
+        const doctorId = accounts[7];
+        const patientId = accounts[8];
+        await supplyChain.addDoctor(doctorId);
+        await supplyChain.addPatient(patientId);
+            
+        var sku = 4;
+        var fileId = "file-id";
+        var fileIdUpdated = "file-id updated";
+        var price = 0.001;
+
+       
+        await supplyChain.createMDR(sku, fileId , patientId);
+        await supplyChain.updateMDR(sku, fileIdUpdated , price);
+        await supplyChain.payMDR(sku, price);
+
+        // assert.equal(canRead, true, 'Invalid permission');
     })
 
 });
