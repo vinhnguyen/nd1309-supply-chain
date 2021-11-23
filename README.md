@@ -7,9 +7,9 @@ This repository shows a supply chain DAPP.
 This project was deployed on the rinkeby testnet.
 
 ```
- transaction hash:  0x22568749da81003da2a20b0a34d80909eb38be564598af9dd60f714ec0483113
+ transaction hash:  0x0323dead907960414f8044ebd492c740465411ae97bccedd0ab53c88d801349c
 
- contract address:  0xcB403AcF4A6FC1819e7b1C84BF6066d38B2Ee274
+ contract address:  0xaF8266bc89b7B92D3D8771758371233E2396Beac
 
 ```
 
