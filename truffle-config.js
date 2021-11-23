@@ -12,11 +12,11 @@ module.exports = {
      // websockets: true
     },
   
-  rinkeby: {
-    provider: new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`),
-    network_id: 4,       // Rinkeby id
-    gas: 4500000,        
-    }
+    // rinkeby: {
+    //   provider: new HDWalletProvider(mnemonic, `https://rinkeby.infura.io/v3/${infuraKey}`),
+    //   network_id: 4,       // Rinkeby id
+    //   gas: 4500000,        
+    // }
   },
   compilers: {
     solc: {

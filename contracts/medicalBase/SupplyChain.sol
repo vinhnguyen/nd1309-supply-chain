@@ -6,9 +6,9 @@ import "../medicalAccesscontrol/DoctorRole.sol";
 import "../medicalCore/Ownable.sol";
 
 // Define a contract 'Supplychain'
-contract SupplyChain is DoctorRole, PatientRole {
+contract SupplyChain is DoctorRole, PatientRole, Ownable {
     // Define 'owner'
-    address owner;
+    // address owner;
 
     // Define a variable called 'sku' for Stock Keeping Unit (SKU)
     uint256 sku;
@@ -42,11 +42,6 @@ contract SupplyChain is DoctorRole, PatientRole {
     event Updated(uint256 sku);
     event Completed(uint256 sku);
 
-    // Define a modifer that checks to see if msg.sender == owner of the contract
-    modifier onlyOwner() {
-        require(msg.sender == owner);
-        _;
-    }
 
     // Define a modifer that verifies the Caller
     modifier verifyCaller(address _address) {
@@ -73,15 +68,8 @@ contract SupplyChain is DoctorRole, PatientRole {
     }
 
     constructor() public payable {
-        owner = msg.sender;
         sku = 1;
-    }
-
-    function kill() public {
-        if (msg.sender == owner) {
-            selfdestruct(owner);
-        }
-    }
+    }   
 
     function createMDR(
         uint256 _sku,
